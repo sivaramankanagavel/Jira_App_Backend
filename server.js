@@ -9,7 +9,11 @@ dotenv.config();
 
 const app = express();
 app.use(json());
-app.use(cors());
+// In server.js (backend)
+app.use(cors({
+  origin: "http://localhost:3000", // or your frontend URL
+  credentials: true
+}));
 
 const authRoutes = require('./routes/authRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
