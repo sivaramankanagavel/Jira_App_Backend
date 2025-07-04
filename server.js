@@ -11,7 +11,7 @@ const app = express();
 app.use(json());
 // In server.js (backend)
 app.use(cors({
-  origin: "http://localhost:3000", // or your frontend URL
+  origin: ["http://localhost:3000", "http://tiger-task-tracker.s3-website-us-east-1.amazonaws.com"],
   credentials: true
 }));
 
