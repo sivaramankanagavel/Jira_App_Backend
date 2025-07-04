@@ -21,7 +21,7 @@ const adminOnly = (req, res, next) => {
   next();
 };
 
-router.get('/', auth, getAllProjects);
+router.get('/user', auth, getAllProjects);
 router.get('/:id', auth, getProjectById);
 router.post('/', auth, createProject);
 router.put('/:id', auth, updateProject);

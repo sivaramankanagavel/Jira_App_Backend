@@ -11,9 +11,7 @@ const auth = async (req, res, next) => {
 
     const token = authHeader.split(' ')[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    // ✅ If User is not a valid model, this line will break
-    req.user = await User.findById(decoded.id).select('-password');
+    req.user = await User.findById(decoded.id);
 
     if (!req.user) {
       return res.status(401).json({ message: 'User not found' });

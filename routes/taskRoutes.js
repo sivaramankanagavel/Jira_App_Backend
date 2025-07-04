@@ -7,12 +7,14 @@ const {
     updateTask,
     deleteTask,
     getTasksByProject,
-    getTasksByAssignee
+    getTasksByAssignee,
+    getAssignedTasks
 } = require('../controllers/taskController');
 
 const router = express.Router();
 
 router.get('/', auth, getAllTasks);
+router.get('/assigned', auth, getAssignedTasks);
 router.get('/:id', auth, getTaskById);
 router.post('/', auth, createTask);
 router.put('/:id', auth, updateTask);

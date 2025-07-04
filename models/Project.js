@@ -30,5 +30,16 @@ const projectSchema = new Schema({
   }
 });
 
+projectSchema.virtual('ownerName', {
+  ref: 'User',
+  localField: 'ownerId',
+  foreignField: '_id',
+  justOne: true,
+  options: { select: 'name' }
+});
+
+projectSchema.set('toJSON', { virtuals: true });
+projectSchema.set('toObject', { virtuals: true });
+
 const Project = mongoose.model('Project', projectSchema);
 module.exports = Project;
